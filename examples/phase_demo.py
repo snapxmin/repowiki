@@ -55,7 +55,7 @@ This is a simple example project.
 def create_medium_repo(path: Path):
     """Create a medium repository (10K-100K lines)."""
     # Create multiple modules
-    for i in range(50):
+    for i in range(100):
         module_dir = path / f'module_{i}'
         module_dir.mkdir(exist_ok=True)
         
@@ -76,14 +76,14 @@ class Module{i}:
     def validate(self, data):
         """Validate data."""
         return True
-''' * 5)  # ~800 lines per module = ~40K total
+''' * 10)  # ~1600 lines per module = ~160K total (will be Phase 2)
 
 
 def create_complex_repo(path: Path):
     """Create a complex repository (> 100K lines)."""
     # Create many modules with deep hierarchy
-    for i in range(200):
-        module_dir = path / f'package_{i // 20}' / f'module_{i}'
+    for i in range(300):
+        module_dir = path / f'package_{i // 30}' / f'module_{i}'
         module_dir.mkdir(parents=True, exist_ok=True)
         
         (module_dir / '__init__.py').write_text(f'"""Module {i}."""\n')
@@ -107,7 +107,7 @@ class Implementation{i}:
     def method3(self):
         """Method 3."""
         pass
-''' * 10)  # ~2K lines per module = ~400K total
+''' * 20)  # ~4K lines per module = ~1.2M total (Phase 3)
 
 
 def analyze_example(name: str, create_func, expected_phase: int):
